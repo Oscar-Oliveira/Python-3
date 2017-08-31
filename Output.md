@@ -4354,7 +4354,7 @@ except AssertionError:
 ## Standard Library
 ## The Python Standard Library
 [https://docs.python.org/3/library/](https://docs.python.org/3/library/)
-### Standard Library\Modules
+### Modules
 #### configparser
 
 ```
@@ -5134,7 +5134,7 @@ import this
 ```
 '''
 threading
-Note: run on terminal
+- Execute on terminal
 '''
 
 import random
@@ -5579,12 +5579,8 @@ if __name__ == "__main__":
 <li style="font-size:0.6em;">[Codecademy - Learn Python](https://www.codecademy.com/learn/learn-python)</span>
 <li style="font-size:0.6em;">[How to Think Like a Computer Scientist: Learning with Python 3](http://openbookproject.net/thinkcs/python/english3e/)</span>
 <li style="font-size:0.6em;">[Think Python](http://greenteapress.com/wp/think-python-2e/)</span>
-</ul>
-See also:
-<ul>
 <li style="font-size:0.6em;">[Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)</span>
 </ul>
-
 
 ![QA](./Assets/images/QA.png)
 

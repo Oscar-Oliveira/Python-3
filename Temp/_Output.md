@@ -50,11 +50,11 @@ print("Hello World!")
 Comments
 """
 
-# this is a single line comment
-# this is another single line comment
+# This is a single line comment
+# This is another single line comment
 
 '''
-this
+This
 is
 a
 multiline
@@ -62,7 +62,7 @@ comment
 '''
 
 """
-this
+This
 is
 another
 multiline
@@ -84,13 +84,17 @@ $ print(a * 2)
 $ exit()
 ```
 
+@[1] 
+@[3-5] 
+@[7] 
+
 <div style="text-align:left; font-size:0.5em;">* REPL (READ-EVAL-PRINT-LOOP):</div>
 <div style="text-align:left; font-size:0.4em;">
 <ul style="Padding-Left:25px">
-<li>**READ** whatever input we type in,</li>
-<li>**EVAL**uate it,</li>
-<li>**PRINT** the result and then</li>
-<li>**LOOP** back to the beginning.</li>
+<li>READ whatever input we type in,</li>
+<li>EVALuate it,</li>
+<li>PRINT the result and then</li>
+<li>LOOP back to the beginning.</li>
 </ul>
 </div>
 
@@ -180,6 +184,11 @@ $ a = 5
 $ help(a)               # help(object)
 ```
 
+@[1-3] 
+@[5] 
+@[7-8]
+@[10-11]
+
 ### input
 
 ```
@@ -211,14 +220,14 @@ print(value)
 value = 0x10 # hexadecimal
 print(value)
 
-# using constructors
+# Using constructors
 print()
 value = int(2.5)
 print(value)
 value = int(-2.5)
 print(value)
 
-# using constructors with base
+# Using constructors with base
 print()
 value = int("10")
 print(value)
@@ -242,14 +251,14 @@ import sys
 value = 2.123
 print(value)
 
-# using constructors
+# Using constructors
 print()
 value = float(5)
 print(value)
 value = float("5")
 print(value)
 
-# scientific notation
+# Scientific notation
 print()
 value = 2e6
 print(value)
@@ -257,16 +266,16 @@ value = 1.136e-25
 print(value)
 print("{0:.28f}".format(value))
 
-# max. Value
+# Max. Value
 print()
 print("{0}".format(sys.float_info.max)) # presents most readable 
 print("{0:f}".format(sys.float_info.max)) # as a long float value
 
-# promotion to float
+# Promotion to float
 print()
 value = (2 + 1) * 3 + 1 # value will be integer
 print(value)
-value = (2 + 1) * 3 + 1.0 # value will be a float
+value = (2 + 1) * 3 + 1.0 # value will be float
 print(value)
 
 ```
@@ -333,7 +342,7 @@ print(value)
 Strings
 """
 
-# using constructors
+# Using constructors
 print()
 print(str(100))
 print(str(3.04))
@@ -348,7 +357,7 @@ print('"Mixed" quotes')
 print("'Mixed' quotes")
 
 print()
-# triple quotes - multiline string
+# Triple quotes - multiline string
 message = '''Laborum reprehenderit voluptate dolore adipisicing
 dolore aliqua magna voluptate commodo reprehenderit sit.'''
 print(message)
@@ -539,6 +548,12 @@ print()
 print("Team1 VS Team2".partition(" VS "))
 
 print()
+t1, t2, t3 = "Team1 VS Team2".partition(" VS ")
+print(t1, t2, t3)
+t1, _, t2 = "Team1 VS Team2".partition(" VS ") # throwaway var.
+print(t1, t2)
+
+print()
 student = "Student1;10;11;12".partition(";")
 print("name:{} grades:{}".format(student[0], student[2]))
 
@@ -701,11 +716,11 @@ print(item not in container)
 ```
 ## Control Flow
 ### Decision
-#### if condition :
+#### if
 
 ```
 """
-if condition :
+if
 """
 
 NUMBER = 17
@@ -716,12 +731,11 @@ if value == NUMBER:
 print("Game over...")
 
 ```
-#### if condition :
+#### if else
 
 ```
 """
-if condition :
-else :
+if else
 """
 
 NUMBER = 17
@@ -734,13 +748,11 @@ else:
 print("Game over...")
     
 ```
-#### if condition :
+#### if elif else
 
 ```
 """
-if condition :
-elif condition :
-else :
+if elif else
 """
 
 NUMBER = 17
@@ -754,11 +766,11 @@ else:
     print("your number is lower")
     
 ```
-#### logical operators and nested if
+#### Logical operators and nested if
 
 ```
 """
-logical operators and nested if
+Logical operators and nested if
 """
 
 grade1 = 15
@@ -790,11 +802,11 @@ is_student = student_name in ["Student 1", "Student 2", "Student 3"]
 print(is_student)
 
 ```
-#### Chained
+#### Chained operations
 
 ```
 """
-Chained
+Chained operations
 """
 
 # chained assigment
@@ -856,11 +868,11 @@ while not hit:
         print("your number is lower")
 
 ```
-#### while
+#### while else
 
 ```
 """
-while
+while else
 """
 
 NUMBER = 17
@@ -1155,11 +1167,11 @@ print()
 mean(Student1=20, Student2=2, Student3=15)
 
 ```
-### Return
+### return
 
 ```
 """
-Return
+return
 """
 
 def my_max(*numbers):
@@ -1202,11 +1214,11 @@ my_sqrt(2)
 my_sqrt(-2)
 
 ```
-### lambda
+### lambda expressions
 
 ```
 """
-lambda
+lambda expressions
 """
 
 f = lambda x: x ** (2 if x > 5 else 3)
@@ -1249,6 +1261,7 @@ print(abs(value))
 ```
 """
 any(iterable) | all(iterable)
+- Iterables: str, list, dict, range, tuple, set, bytes
 """
 
 value = all([True, True, True])
@@ -1376,11 +1389,12 @@ def is_even(number):
     return number % 2 == 0
 
 values = list(range(10))
-
 print("".join(str(x) for x in values))
 
 values = filter(is_even, values)
+print("".join(str(x) for x in values))
 
+values = filter(lambda x: x % 3 == 0, list(range(10)))
 print("".join(str(x) for x in values))
 
 ```
@@ -1428,6 +1442,7 @@ print(max(values))
 values = ["a", "ab", "AB", "_1", "0", "-1", "-"]
 print(max(values))
 
+print()
 for i in values:
     print(i, ord(i[0]))
     
@@ -1445,8 +1460,10 @@ print(min(values))
 values = ["a", "ab", "AB", "_1", "0", "-1", "-"]
 print(min(values))
 
+print()
 for i in values:
     print(i, ord(i[0]))
+
 ```
 ### ord
 
@@ -1455,25 +1472,25 @@ for i in values:
 ord
 """
 
-def HashMe(text):
+def hash_me(text):
     hash_value = 0
     for e in text:
         hash_value += ord(e)
     return hash_value
 
-def PrintMyChars(text):
+def print_my_chars(text):
     for e in text:
         print(ord(e), end=" ")
 
 message1 = "Python is Great!"
 message2 = "Python is GREAT!"
 
-print(HashMe(message1))
-print(HashMe(message2))
+print(hash_me(message1))
+print(hash_me(message2))
 
-PrintMyChars(message1)
+print_my_chars(message1)
 print()
-PrintMyChars(message2)
+print_my_chars(message2)
 
 ```
 ### range
@@ -1483,21 +1500,21 @@ PrintMyChars(message2)
 range
 """
 
-def PrintRange(values):
+def print_range(values):
     print(", ".join([str(i) for i in values]))
 
 # range (stop)
 print(list(range(4)))
-PrintRange(range(4))
-PrintRange(range(10))
+print_range(range(4))
+print_range(range(10))
 
 # range (start, finish, [step])
-PrintRange(range(3, 20))
-PrintRange(range(0, 20, 2))
-PrintRange(range(1, 20, 2))
-PrintRange(range(20, 0, -1))
-PrintRange(range(-20, 0, 2))
-PrintRange(range(0, -20, -2))
+print_range(range(3, 20))
+print_range(range(0, 20, 2))
+print_range(range(1, 20, 2))
+print_range(range(20, 0, -1))
+print_range(range(-20, 0, 2))
+print_range(range(0, -20, -2))
 
 ```
 ### sum
@@ -1534,7 +1551,7 @@ print(type(None))
 print(type(1))
 print(type("Example"))
 print(type([10, 11]))
-print(test)
+print(type(test))
 
 ```
 ### vars
@@ -1591,11 +1608,11 @@ print(math.sqrt(25))
 print(dir())
 
 ```
-### from ... import....
+### from import
 
 ```
 """
-from ... import....
+from import
 """
 
 from math import sqrt
@@ -1605,11 +1622,11 @@ print(sqrt(25))
 print(dir())
 
 ```
-### Module
+### Module example
 
 ```
 """
-Module
+Module example
 """
 
 __version__ = 1.0 # builin attribute
@@ -1627,11 +1644,11 @@ if __name__ == "__main__":
     print(my_sum(some_value, some_value))
 
 ```
-### import module
+### Import module example
 
 ```
 """
-import module
+Import module example
 """
 
 import _03_module
@@ -1643,11 +1660,11 @@ print(_03_module.__sprint__)
 print(_03_module.some_value)
 
 ```
-### import module
+### Import module example
 
 ```
 """
-import module
+Import module example
 """
 
 from _03_module import my_sum, __version__, __sprint__, some_value
@@ -1659,11 +1676,11 @@ print(__sprint__)
 print(some_value)
 
 ```
-### import modules
+### from ... import *
 
 ```
 """
-import modules
+from ... import *
 """
 
 from _03_module import *
@@ -1721,11 +1738,12 @@ print(ModuleTest.my_multiplier(15, 10))
 print(third.my_multiplier(15, 10))
 
 ```
-### This is a module DocString
+### DocString
 
 ```
 """
-This is a module DocString
+DocString
+This is a dummy DocString for this module
 - Execute (on script folder):
     $ python
     $ import _10_docString
@@ -1832,13 +1850,11 @@ print(backupList)
 ```
 """
 Mutability
-- Python is strongly object-oriented in the sense that \
-  everything is an object including numbers, strings \
-  and functions
-- Immutable objects: int, float, decimal, complex, bool, \
-                     string, tuple, range, frozenset, bytes \
-- Mutable objects: list, dict, set, bytearray, \
-                   user-defined classes
+- Python is strongly object-oriented in the sense that everything
+    is an object including numbers, strings and functions
+- Immutable objects: int, float, decimal, complex, bool, string,
+    tuple, range, frozenset, bytes
+- Mutable objects: list, dict, set, bytearray,user-defined classes
 """
 
 def memory_address(obj):
@@ -2096,7 +2112,7 @@ if __name__ == "__main__":
 Tuple
 """
 
-import _05_tuple1 as t
+import _05_tuple_01 as t
 
 def get_report(values):
     report = [] # empty list
@@ -2146,7 +2162,7 @@ print(one)
 """
 Dictionary
 - key:value pair.
-- keys must be immutable and are unique.
+- keys are uniques and must be immutables.
 """
 
 student = {}
@@ -2320,14 +2336,14 @@ set2.clear()
 print(set2)
 
 ```
-## Input and Output
+## Files
 ### Files
 
 ```
 """
 Files
-- open(FILE, ACCESSMODE)
-- ACCESSMODE:
+- open(FILE, ACCESS_MODE)
+- ACCESS_MODE:
     - w, r, a: write, read, append
     - w+, r+, a+: write/read, read/write, append/read
     - wb, rb, ab: write, read append binary
@@ -2442,11 +2458,11 @@ print(grades2["student1"][1])
 
 ```
 ## Exceptions
-### try ... except...
+### try except
 
 ```
 """
-try ... except...
+try except
 """
 
 try:
@@ -2462,26 +2478,18 @@ else: # Executes if no exceptions are raised
     print("Everithings Ok.")
 
 ```
-### try ... except...
+### try except
 
 ```
 """
-try ... except...
+try except
 """
 
 try:
     a = 1 / 0
 except ZeroDivisionError:
     print("Something went wrong with a zero value")
-except ValueError:
-    print("Something went wrong with values")
-except:
-    print("Something went wrong")
-else: print("Everithings Ok.")
-
-try:
-    a = 1 / 0
-except (ZeroDivisionError, ValueError):
+except (TypeError, ValueError):
     print("Something went wrong with values")
 except:
     print("Something went wrong")
@@ -2500,8 +2508,7 @@ try:
 except ZeroDivisionError as err:
     print("Error:", err)
 except TypeError as err:
-    print("Error:", err)
-    print("Could not convert data.")
+    print("Error:", err, "\nCould not convert data.")
 else:
     print("Everithings Ok.")
 
@@ -2526,11 +2533,11 @@ else:
     print("Everithings Ok.")
 
 ```
-### sys.exc_info
+### Handler
 
 ```
 """
-sys.exc_info
+Handler
 """
 
 import sys
@@ -2599,11 +2606,11 @@ else:
     print("Everithings Ok.")
 
 ```
-### try ... except...
+### Flow
 
 ```
 """
-try ... except...
+Flow
 """
 
 import sys
@@ -2658,7 +2665,7 @@ from pathlib import Path
 
 filePath = str(Path(os.path.dirname(__file__)).parent.joinpath("Temp", "with.txt"))
 
-# Guaranteed to close the file, 
+# Guaranteed to close the file
 with open(filePath, "w") as file:
     file.write("Hi there!")
     print(dir(file))
@@ -2668,11 +2675,14 @@ a = [2, 4, 2]
 print(dir(a))
 
 class temp:
+
     def __enter__(self):
         print("__enter__")
         return self
+
     def Using(self):
         print("Using()")
+
     def __exit__(self, exc_type, exc_val, exc_tb):
         print("__exit__")
 
@@ -2684,11 +2694,11 @@ with temp() as t:
     t.Using()
 
 ```
-### try: import
+### try import
 
 ```
 """
-try: import
+try import
 """
 
 try:
@@ -2843,20 +2853,20 @@ def main():
 
     print()
     for item in pop(4, items):
-        print(item)
+        print(item, end=" ")
 
     print()
     for item in distinct(items):
-        print(item)
+        print(item, end=" ")
 
     print()
     for item in pop(4, distinct(items)):
-        print(item)
+        print(item, end=" ")
 
     print()
     a = incremenetal_random_number()
     for i in range(3):
-        print(next(a)) # could do this infinitely
+        print(next(a), end=" ") # could do this infinitely
 
 if __name__ == "__main__":
     main()
@@ -2871,16 +2881,18 @@ Generator expressions
 
 items = (x*3 for x in range(1, 100) if x % 2 == 0)
 for i in items:
-    print(i)
+    print(i, end=" ")
 
-# need to create, generato because previous already finished. 
+# Needs to generato new one because previous already finished. 
 # Python's iterator protocol only provides the next() method.
 # and no method to reset an iterator.
 
+print("\n")
 items = (x*3 for x in range(1, 100) if x % 2 == 0)
 items = list(items) # force list generation consume large quantity of memory
 print(items)
 
+print()
 sumValues = sum(x*3 for x in range(1, 100) if x % 2 == 0) 
 print(sumValues)
 
@@ -2897,19 +2909,22 @@ from itertools import islice, count, chain
 
 v = islice((x for x in count() if x % 3 == 0), 100) 
 for i in v: 
-    print(i)
+    print(i, end=" ")
 
-# force
+print("\n")
+# force list generation
 x = list(islice((x for x in count() if x % 3 == 0), 100))
 print(x)
 
+print()
 students = ["Student1", "Student2", "Student3", "Student4", "Student5"] 
 grades1 = [12, 14, 15, 15]
 grades2 = [13, 14, 14, 14, 10]
 v = chain(students, grades1, grades2)
 for item in v:
-    print(item)
+    print(item, end=" ")
 
+print("\n")
 print(all(x>=10 for x in chain(grades1, grades2)))
 
 ```
@@ -2965,14 +2980,14 @@ def execTime(func):
 @execTime
 def dummy_function1():
     sum_ = 0
-    for value in range(5000):
+    for value in range(500):
         sum_ += value
     print("\nSum: ", str(sum_))
 
 @execTime
 def dummy_function2():
     mult = 1
-    for value in range(5000):
+    for value in range(1, 500):
         mult *= value
     print("Mult: ", str(mult))
 
@@ -3034,7 +3049,7 @@ if __name__ == "__main__":
 
 ```
 ## Object Oriented Programming
-### OOP1
+### OOP Part 1
 #### Abstract Class - GeometricForm
 
 ```
@@ -3053,11 +3068,11 @@ class GeometricForm():
         print(self.__class__.__name__, self, "destroyed")
 
 ```
-#### class Point
+#### Class - Point
 
 ```
 """
-class Point
+Class - Point
 """
 
 from _01_GeometricForm import GeometricForm
@@ -3171,11 +3186,11 @@ if __name__ == "__main__":
     print("Done!")
 
 ```
-#### Class Point3D
+#### Class - Point3D
 
 ```
 """
-Class Point3D
+Class - Point3D
 """
 
 import math
@@ -3222,11 +3237,11 @@ if __name__ == "__main__":
     print("Done!")
 
 ```
-#### Class Rectangle
+#### Class - Rectangle
 
 ```
 """
-Class Rectangle
+Class - Rectangle
 """
 
 import copy
@@ -3327,12 +3342,12 @@ if __name__ == "__main__":
     print("Done!")
 
 ```
-#### Class PointExt1
+#### Decorators
 
 ```
 """
-Class PointExt1
 Decorators
+Class - PointExt1
 See: http://pythoncentral.io/difference-between-staticmethod-and-classmethod-in-python/
 """
 
@@ -3384,12 +3399,12 @@ if __name__ == "__main__":
     print("Done!")
 
 ```
-#### Class PointExt2
+#### Properties - Getter and Setter
 
 ```
 """
-Class PointExt2
 Properties - Getter and Setter
+Class - PointExt2
 """
 
 from _02_Point import Point
@@ -3420,12 +3435,12 @@ if __name__ == "__main__":
     print("Done!")
 
 ```
-#### Class PointExt3
+#### Properties - Decorators
 
 ```
 """
-Class PointExt3
 Properties - Decorators
+Class - PointExt3
 """
 
 from _02_Point import Point
@@ -3445,7 +3460,7 @@ class PointExt3(Point):
         self.__color = value
 
 def main():
-    
+
     point = PointExt3(2, 2)
     print(point.Color)
     point.Color = "red"
@@ -3456,7 +3471,7 @@ if __name__ == "__main__":
     print("Done!")
 
 ```
-### Object Oriented Programming\01, OOP2
+### OOP Part 2
 #### Owner
 
 ```
@@ -3564,11 +3579,11 @@ class Animal:
         return True
 
 ```
-#### OOP
+#### OOP - Examples
 
 ```
 """
-OOP
+OOP - Examples
 """
 
 from _01_Owner import Owner
@@ -3640,11 +3655,11 @@ for a in animals:
         print("{:15}: {}".format(a.get_name(), "No TAG"))
               
 ```
-#### OOP
+#### OOP - Examples
 
 ```
 """
-OOP
+OOP - Examples
 """
 
 import _02_Animal as A
@@ -3680,11 +3695,11 @@ print(dog2 == dog3) # uses __eq__ from animal
 print(dog2 is dog3)
 
 ```
-#### Dog and Cat classes
+#### Dogs and Cats
 
 ```
 """
-Dog and Cat classes
+Dogs and Cats
 """
 
 from _02_Animal import Animal
@@ -3706,11 +3721,11 @@ class Cat(Animal):
         print(self._name, ": MIAU!!! MIAU!! MIAU!!")
 
 ```
-#### OOP
+#### OOP - Examples
 
 ```
 """
-OOP
+OOP - Examples
 """
 
 from _02_Animal import Animal
@@ -3746,11 +3761,11 @@ for animal in pets:
     animal.speak()
 
 ```
-#### Class Chipped
+#### Class - Chipped
 
 ```
 """
-Class Chipped
+Class - Chipped
 """
 
 class Chipped:
@@ -3770,6 +3785,7 @@ class Chipped:
 ```
 """
 Multiple inheritance
+Class - NewDog
 """
 
 from _07_Chipped import Chipped
@@ -3794,11 +3810,11 @@ if __name__ == "__main__":
 
 ```
 ## Data Structures
-### Class location
+### Class - Location
 
 ```
 """
-Class location
+Class - Location
 """
 
 import math 
@@ -3816,11 +3832,11 @@ class Location():
         return self.name > other.name
     
 ```
-### Class Node
+### Class - Node
 
 ```
 """
-Class Node
+Class - Node
 """
 
 class Node:
@@ -3833,11 +3849,11 @@ class Node:
         return str(self.__obj)
 
 ```
-### Linked List
+### Class - LinkedList
 
 ```
 """
-Linked List
+Class - LinkedList
 """
 
 from _01_Location import Location
@@ -4088,7 +4104,21 @@ Tree
 
 from _01_Location import Location
 
-class Tree():
+class TreeADT():
+
+    def insert(self):
+        raise NotImplementedError("Must implement this")
+
+    def traverseInorder(self):
+        raise NotImplementedError("Must implement this")
+
+    def traversePreorder(self):
+        raise NotImplementedError("Must implement this")
+
+    def traversePostorder(self):
+        raise NotImplementedError("Must implement this")
+
+class Tree(TreeADT):
 
     class Node():
 
@@ -4152,7 +4182,7 @@ def main():
     tree.insert(Location("porto"))
     tree.insert(Location("Felgueiras"))
     tree.insert(Location("Aveiro"))
-    tree.insert(Location("Alipo"))
+    tree.insert(Location("Alijo"))
     tree.insert(Location("lisboa"))
     tree.insert(Location("beja"))
     tree.insert(Location("evora"))
@@ -4176,6 +4206,8 @@ if __name__ == "__main__":
 ```
 """
 unittest
+See: https://docs.python.org/3.6/library/unittest.html
+See: https://jeffknupp.com/blog/2013/12/09/improve-your-python-understanding-unit-testing/
 """
 
 import unittest 
@@ -4184,8 +4216,8 @@ class TextAnalysisTests(unittest.TestCase):
 
     # test cases begin with test_
     def test_function_runs(self):
-        """The function run? aka: Smoke test:"""
-        Multiply()
+        """The function run? aka 'Smoke test'"""
+        multiply()
 
 if __name__ == "__main__": 
     unittest.main()
@@ -4203,9 +4235,9 @@ import unittest
 class TextAnalysisTests(unittest.TestCase):
 
     def test_function_runs(self):
-        Multiply()
+        multiply()
 
-def Multiply():
+def multiply():
     pass
 
 if __name__ == "__main__":
@@ -4238,9 +4270,9 @@ class TextAnalysisTests(unittest.TestCase):
 
     def test_function_runs(self):
         print("?", end="")
-        Multiply(self.a, self.b)
+        multiply(self.a, self.b)
 
-def Multiply(value1, value2):
+def multiply(value1, value2):
     print("!", end="")
     return value1 * value2
 
@@ -4294,6 +4326,31 @@ if __name__ == "__main__":
     unittest.main()
 
 ```
+### assert
+
+```
+'''
+assert
+raise an AssertionError if False
+'''
+
+MaxInField = 9
+Team1 = set(range(1, 12))
+Team2 = {1, 2, 4, 7, 5, 7, 11, 10, 23}
+Team3 = {1, 2, 4, 7, 5, 8, 11, 10, 23, 13, 14, 15}
+
+print(Team1, len(Team1))
+print(Team2, len(Team2))
+print(Team3, len(Team3))
+
+try:
+    assert len(Team1) <= MaxInField
+    assert len(Team2) <= MaxInField
+    print('Play the game!!')
+except AssertionError:
+    print('Teams are not well defined.')
+
+```
 ## Standard Library
 ## The Python Standard Library
 [https://docs.python.org/3/library/](https://docs.python.org/3/library/)
@@ -4343,7 +4400,7 @@ def remove_setting(filepath, section, setting):
 
 if __name__ == "__main__":
 
-    filePath = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("Temp", "settings.ini"))
+    filePath = str(Path(os.path.dirname(__file__)).parent.parent.joinpath('Temp', 'settings.ini'))
 
     create_config_file(filePath)
 
@@ -4383,32 +4440,32 @@ def main():
 
 if __name__ == "__main__":
     main()
-
+    
 ```
 #### cProfile
 
 ```
 """
 cProfile
-Columns:
-- ncalls- number of calls made
-- tottime- total time spent in current function
-- percall-  tottime divided by ncalls
-- cumtime- cumulative time spent in current function and subfunctions
-- percall- cumtime divided by primitive calls
-- fileName:lineNumber(function)
+- Columns:
+    - ncalls- number of calls made
+    - tottime- total time spent in current function
+    - percall- tottime divided by ncalls
+    - cumtime- cumulative time spent in current function and subfunctions
+    - percall- cumtime divided by primitive calls
+    - fileName:lineNumber(function)
 """
 
 import cProfile
 import os
 from pathlib import Path
-
 import _cProfile_01
 
 cProfile.run("_cProfile_01.main()")
-
 filePath = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("Temp", "cProfile_output.txt"))
+
 cProfile.run("_cProfile_01.main()", filePath)
+
 # On Command Line:
 # $ python -m cProfile -o ..\..\Temp\output.txt .\_cProfile_01.py
 # output.txt will be binary, pstats needed
@@ -4436,9 +4493,9 @@ p.strip_dirs().sort_stats(-1).print_stats()
 #### csv
 
 ```
-"""
+'''
 csv
-"""
+'''
 
 import os
 import csv
@@ -4446,13 +4503,13 @@ import random
 from pathlib import Path
 
 def write_CSV(filepath, data, delim = ","):
-    with open(filepath, "w", newline="") as file:
+    with open(filepath, "w", newline='') as file:
         writer = csv.writer(file, delimiter=delim)
         for line in data:
             writer.writerow(line)
 
 def write_CSV_DICT(filepath, data, headers, delim = ","):
-    with open(filepath, "w", newline="") as file:
+    with open(filepath, "w", newline='') as file:
         writer = csv.DictWriter(file, delimiter=delim, fieldnames=headers)
         writer.writeheader()
         for row in data:
@@ -4466,16 +4523,16 @@ def read_CSV(filepath, delim = ",") :
 
 if __name__ == "__main__":
 
-    filePath = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("Temp", "data.csv"))
+    filePath = str(Path(os.path.dirname(__file__)).parent.parent.joinpath('Temp', 'data.csv'))
 
-    students = [
+    Students = [
         ["student 1", random.randint(0, 20), random.randint(0, 20), random.randint(0, 20)],
         ["student 2", random.randint(0, 20), random.randint(0, 20), random.randint(0, 20)],
         ["student 3", random.randint(0, 20), random.randint(0, 20), random.randint(0, 20)],
         ["student 4", random.randint(0, 20), random.randint(0, 20), random.randint(0, 20)]
     ]
 
-    write_CSV(filePath, students)
+    write_CSV(filePath, Students)
     read_CSV(filePath)
 
     print('-' * 50)
@@ -4483,11 +4540,11 @@ if __name__ == "__main__":
 
     # Creates dict
     header = ["Name", "Grade 1", "Grade 2", "Grade 3"]
-    new_students = [ dict(zip(header, row)) for row in students]
-    print( "\n".join([str(row) for row in new_students]))
+    newStudents = [dict(zip(header, row)) for row in Students]
+    print( "\n".join([str(row) for row in newStudents]))
 
     print()
-    write_CSV_DICT(filePath, new_students, header)
+    write_CSV_DICT(filePath, newStudents, header)
     read_CSV(filePath)
     
 ```
@@ -4501,18 +4558,18 @@ See: http://strftime.org/
 
 import datetime
 
-date1 = datetime.date(2017, 6, 10)
-date2 = datetime.datetime(2017, 6, 10, 11, 30, 0)
+data1 = datetime.date(2017, 6, 10)
+data2 = datetime.datetime(2017, 6, 10, 11, 30, 0)
 
-print(date1)
+print(data1)
 
-print(date2)
-print(date2.year)
-print(date2.month)
-print(date2.day)
-print(date2.hour)
-print(date2.minute)
-print(date2.second)
+print(data2)
+print(data2.year)
+print(data2.month)
+print(data2.day)
+print(data2.hour)
+print(data2.minute)
+print(data2.second)
 
 current_date = datetime.date.today()
 print(current_date)
@@ -4562,39 +4619,9 @@ def swap2():
 
 print("swap1():")
 dis.dis(swap1)
+
 print("swap2():")
 dis.dis(swap2)
-
-```
-#### smtp
-
-```
-"""
-smtp
-"""
-
-import smtplib
-
-EMAIL_HOST = "smtp.mailtrap.io"
-EMAIL_HOST_USER = "1ccd1fc0462e08"
-EMAIL_HOST_PASSWORD = "f2d750abd80bd4"
-EMAIL_PORT = "2525"
-
-from_email = "oscar.m.oliveira@gmail.com"
-
-to = ["oscar.m.oliveira@gmail.com", "oscar.m.oliveira@outlook.com"]
-
-subject = "Some subject..."
-text = "Some text..."
-
-body = "From: {}\r\nTo: {}\r\nSubject: {}\r\n\r\n{}".format(from_email, ", ".join(to), subject, text)
-
-server = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
-server.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
-server.sendmail(from_email, to, body)
-server.quit()
-
-print("Done!")
 
 ```
 #### keyword
@@ -4626,9 +4653,9 @@ print("Logging to", filePath)
 
 logging.basicConfig( \
     level=logging.DEBUG, \
-    format="%(asctime)s : %(levelname)s : %(message)s", \
+    format='%(asctime)s : %(levelname)s : %(message)s', \
     filename=filePath, \
-    filemode="w") # a to append
+    filemode='w') # a to append
 
 logging.debug("Starting...")
 for i in range(100, -1, -1):
@@ -4653,6 +4680,7 @@ import math
 from pprint import pprint
 
 print(math.sqrt(25))
+
 print(math.pow(2, 3))
 
 print(math.factorial(5))
@@ -4663,7 +4691,6 @@ print(math.ceil(3.5))
 print(math.pi)
 
 pprint(vars(math))
-
 ```
 #### msvcrt and tty
 
@@ -4671,20 +4698,17 @@ pprint(vars(math))
 """
 msvcrt and tty
 - GetKey() - Detect keypress
-"""
+ """
 
 try: 
     import msvcrt # Windows
-
-    def get_key():
+    def GetKey():
         return msvcrt.getch()
-
 except ImportError: 
     import sys
     import tty # Unix
     import termios
-
-    def get_key():
+    def GetKey():
         fd = sys.stdin.fileno()
         original_att = termios.tcgetattr(fd)
         try:
@@ -4696,7 +4720,7 @@ except ImportError:
 
 if __name__ == "__main__":
     print("Press a key to continue...")
-    get_key()
+    GetKey()
     print("Done.")
 
 ```
@@ -4709,7 +4733,7 @@ operator
 
 import operator
 
-def calculate(op, max_): 
+def calculate(op, max_):
     print("\n")
     for x in range(1, max_+1):
         print()
@@ -4736,7 +4760,7 @@ from pathlib import Path
 import pprint as pp
 
 def touch(filename):
-    with open(filename, "w") as file:
+    with open(filename, 'w') as file:
         file.write("")
 
 print("__file__: ", __file__) 
@@ -4803,10 +4827,10 @@ See: https://docs.python.org/3.6/library/pathlib.html
 
 from pathlib import Path
 
-path = Path(r"C:\Program Files").parent
+path = Path(r'C:\Program Files').parent
 print(path)
 
-path = path.joinpath("Temp")
+path = path.joinpath('Temp')
 print(path)
 
 ```
@@ -4822,22 +4846,22 @@ import platform
 import pprint as pp
 
 def NewFileAtHome(fileName):
-    if platform.platform().startswith("indows"):
-        return os.path.join(os.getenv("HOMEDRIVE"), \
-            os.getenv("HOMEPATH"), fileName)
-    return os.path.join(os.getenv("HOME"), fileName)
+    if platform.platform().startswith('Windows'):
+        return os.path.join(os.getenv('HOMEDRIVE'), \
+            os.getenv('HOMEPATH'), fileName)
+    return os.path.join(os.getenv('HOME'), fileName)
 
-file = NewFileAtHome("test.log")
+file = NewFileAtHome('test.log')
 print("Logfile:", file)
 
 pp.pprint(vars(platform))
 
 ```
-#### Pretty print
+#### pprint (Pretty Print)
 
 ```
 """
-Pretty print
+pprint (Pretty Print)
 """
 
 import pprint
@@ -4869,10 +4893,9 @@ seed = 123
 
 rnd = random.Random(seed) # random object with seed
 print(rnd.random())
-
 print(random.random())
-print(random.randint(start, end))
 
+print(random.randint(start, end))
 print(random.randrange(end))
 print(random.randrange(start+2, end))
 print(random.randrange(start+2, end, step=2))
@@ -4889,6 +4912,37 @@ random.shuffle(students)
 print(students)
 
 ```
+#### smtplib
+
+```
+"""
+smtplib
+"""
+
+import smtplib
+
+EMAIL_HOST = "smtp.mailtrap.io"
+EMAIL_HOST_USER = "1ccd1fc0462e08"
+EMAIL_HOST_PASSWORD = "f2d750abd80bd4"
+EMAIL_PORT = "2525"
+
+from_email = "oscar.m.oliveira@gmail.com"
+
+to = ["oscar.m.oliveira@gmail.com", "oscar.m.oliveira@outlook.com"]
+
+subject = "Some subject..."
+text = "Some text..."
+
+body = "From: {}\r\nTo: {}\r\nSubject: {}\r\n\r\n{}".format(from_email, ", ".join(to), subject, text)
+
+server = smtplib.SMTP(EMAIL_HOST, EMAIL_PORT)
+server.login(EMAIL_HOST_USER, EMAIL_HOST_PASSWORD)
+server.sendmail(from_email, to, body)
+server.quit()
+
+print("Done!")
+
+```
 #### sqlite
 
 ```
@@ -4900,7 +4954,7 @@ import sqlite3
 import os
 from pathlib import Path
 
-conn = sqlite3.connect(":memory:") # Create a database in RAM
+conn = sqlite3.connect(':memory:') # Create a database in RAM
 #conn = sqlite3.connect(filePath)
 
 cursor = conn.cursor()
@@ -4908,7 +4962,8 @@ cursor.execute("""CREATE TABLE users(id INTEGER PRIMARY KEY, name TEXT,
     phone TEXT, email TEXT unique, password TEXT)""")
 
 students = [ ["Student1", "123456789", "student1@email.com", "123456"],
-             ["Student2", "987654321", "student2@email.com", "654321"]]
+    ["Student2", "987654321", "student2@email.com", "654321"]]
+
 
 query = """INSERT INTO users(name, phone, email, password)
     VALUES ({})""".format(",".join(["'" + x + "'" for x in students[0]]))
@@ -4951,7 +5006,7 @@ conn.commit()
 conn.close()
 
 filePath = str(Path(os.path.dirname(__file__)).parent.parent. \
-    joinpath("Temp", "mydatabase.db"))
+    joinpath('Temp', 'mydatabase.db'))
 try:
     db = sqlite3.connect(filePath)
     cursor = db.cursor()
@@ -5007,7 +5062,7 @@ sys
 import sys
 from pprint import pprint
 
-def sum(numbers):
+def my_sum(numbers):
     sum = 0
     for i in numbers:
         sum += int(i)
@@ -5018,7 +5073,7 @@ for i in sys.argv:
     print(i)
 
 sys.argv.pop(0)
-print("SUM: ", sum(sys.argv))    
+print("SUM: ", my_sum(sys.argv))    
 
 print(sys.getdefaultencoding())
 
@@ -5038,28 +5093,29 @@ print("Done!")
 sys.exit(0)
 
 print("You do not see me!")
+
 ```
 #### sys
 
 ```
 """
 sys
-Use: $LastExitCode powershell command to see exit code
+- On terminal: Use powershell command $LastExitCode to see error code
 """
 
 import sys
 
 def main():
     if len(sys.argv) < 2:
-        sys.exit("Command line arguments are missing")
-    arg = sys.argv[1]
+        sys.exit('Command line arguments are missing')
     try:
-        result = int(arg)
+        result = int(sys.argv[1])
+        print(str(result * 5))
         return 0
     except:
         return 1
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     sys.exit(main())
 
 ```
@@ -5076,9 +5132,10 @@ import this
 #### threading
 
 ```
-"""
+'''
 threading
-"""
+Note: run on terminal
+'''
 
 import random
 import time
@@ -5096,23 +5153,23 @@ class MyThreadClass(Thread):
         msg = "Done: {} in {}".format(self._name, self._duration)
         print(msg)
 
-def create_threads():
+def main():
     for i in range(1, 6):
         name = "Thread n:{}".format(i)
         my_thread = MyThreadClass(name)
         my_thread.start()
 
 if __name__ == "__main__":
-    create_threads()
+    main()
     
 ```
-#### time
+#### Time
 
 ```
-"""
-time
+'''
+Time
 See: https://docs.python.org/3.6/library/time.html
-"""
+'''
 
 import time
 
@@ -5121,8 +5178,8 @@ def sleep_inc(value):
         print("Sleeping for {} seconds".format(x))
         time.sleep(x)
 
-print(time.strftime("%Y%m%d%H%M%S"))
-print(time.strftime("%Y-%m-%d %H:%M:%S"))
+print(time.strftime('%Y%m%d%H%M%S'))
+print(time.strftime('%Y-%m-%d %H:%M:%S'))
 
 print(time.ctime())
 
@@ -5155,6 +5212,7 @@ class App:
         frame = tkinter.Frame(parent, width=125, height=75)
         frame.pack()
         frame.pack_propagate(0) # prevent frame skink to content
+
         tkinter.Button(frame, text="Bt1", \
             command=lambda: self._inform("first")).\
             pack(side=tkinter.LEFT)
@@ -5187,30 +5245,28 @@ import random
 window = turtle.Screen()
 window.bgcolor("lightgreen")
 window.title("My first Turtle")
-
-MyTurtle = turtle.Turtle()
-MyTurtle.shape("turtle") # blank, circle, classic, square, triangle, turtle
-MyTurtle.pensize(2)
-MyTurtle.speed(5)
+my_turtle = turtle.Turtle()
+my_turtle.shape("turtle") # blank, circle, classic, square, triangle, turtle
+my_turtle.pensize(2)
+my_turtle.speed(5)
 
 def circle():
-    MyTurtle.pendown()
-    MyTurtle.color("red")
-    MyTurtle.begin_fill()
-    MyTurtle.circle(random.randint(-30, 30))
-    MyTurtle.end_fill()
+    my_turtle.pendown()
+    my_turtle.color("red")
+    my_turtle.begin_fill()
+    my_turtle.circle(random.randint(-30, 30))
+    my_turtle.end_fill()
 
 for c in range(4):
     circle()
-    MyTurtle.color("green")
-    MyTurtle.penup()
+    my_turtle.color("green")
+    my_turtle.penup()
     for i in range(10):
-        MyTurtle.stamp()
-        MyTurtle.forward(20)
-    MyTurtle.right(90)
+        my_turtle.stamp()
+        my_turtle.forward(20)
+    my_turtle.right(90)
 
-MyTurtle.hideturtle()
-
+my_turtle.hideturtle()
 window.mainloop() # Wait for user input to close window
 
 ```
@@ -5224,7 +5280,7 @@ turtle
 import turtle
 import random
 
-def Bar(t, h, size, factor, color):
+def bar(t, h, size, factor, color):
     t.color("black", color)
     t.begin_fill()
     t.left(90)
@@ -5238,22 +5294,22 @@ def Bar(t, h, size, factor, color):
     t.end_fill()
     t.color("black", "gray")
 
-def Separator(t, size):
+def separator(t, size):
     t.forward(size)
 
 window = turtle.Screen()
 window.title("Student grades")
 window.bgcolor("white")
 
-myTurtle = turtle.Turtle()
-myTurtle.color("black", "gray")
-myTurtle.pensize(1)
-myTurtle.shape("blank")
+my_turtle = turtle.Turtle()
+my_turtle.color("black", "gray")
+my_turtle.pensize(1)
+my_turtle.shape("blank")
 
-myTurtle.penup()
-myTurtle.setx(-125)
-myTurtle.sety(-75)
-myTurtle.pendown()
+my_turtle.penup()
+my_turtle.setx(-125)
+my_turtle.sety(-75)
+my_turtle.pendown()
 
 students = [
     ["student 1", random.randint(0, 20), random.randint(0, 20), random.randint(0, 20)],
@@ -5262,20 +5318,19 @@ students = [
     ["student 4", random.randint(0, 20), random.randint(0, 20), random.randint(0, 20)]
 ]
 
-Separator(myTurtle, 10)
+separator(my_turtle, 10)
+
 for student in students:
     #myTurtle.write(student[0,])
-    myTurtle.penup()
-    myTurtle.sety(myTurtle.position()[1] - 20)
-    myTurtle.write(student[0], move=False, align="left", font=("Arial", 8, "normal"))
-    myTurtle.sety(myTurtle.position()[1] + 20)
-    myTurtle.pendown()
-    
+    my_turtle.penup()
+    my_turtle.sety(my_turtle.position()[1] - 20)
+    my_turtle.write(student[0], move=False, align="left", font=("Arial", 8, "normal"))
+    my_turtle.sety(my_turtle.position()[1] + 20)
+    my_turtle.pendown()
     for i in range(1, 4):
-        Bar(myTurtle, student[i], 10, 10, "green" if student[i] >= 9.5 else "red")
-        Separator(myTurtle, 5)
-    Separator(myTurtle, 10)
-
+        bar(my_turtle, student[i], 10, 10, "green" if student[i] >= 9.5 else "red")
+        separator(my_turtle, 5)
+    separator(my_turtle, 10)
 window.mainloop()
 
 ```
@@ -5292,47 +5347,43 @@ wn = turtle.Screen()
 wn.title("Turtle 3")
 wn.bgcolor("aqua")
 
-myTurtle = turtle.Turtle()
-myTurtle.shape("turtle")
-myTurtle.color("green", "lightgreen")
+my_turtle = turtle.Turtle()
+my_turtle.shape("turtle")
+my_turtle.color("green", "lightgreen")
 
 myTurtle2 = turtle.Turtle()
 myTurtle2.shape("turtle")
 myTurtle2.color("green", "green")
 
-current = myTurtle
+current = my_turtle
 
-def Swap():
+def swap():
     global current
-    current = myTurtle2 if current == myTurtle else myTurtle
+    current = myTurtle2 if current == my_turtle else my_turtle
 
-def Up():
+def up():
     current.forward(30)
-
-def Left():
+def left():
     current.left(45)
-
-def Right():
+def right():
     current.right(45)
-
-def Down():
+def down():
     current.backward(30)
 
-def Quit():
+def quit():
     wn.bye()
 
-def Goto(x, y):
-    myTurtle.goto(x, y)
+def goto(x, y):
+    my_turtle.goto(x, y)
     #wn.title("Turtle at {0}, {1}".format(x, y))
 
-wn.onkey(Swap, "s")
-wn.onkey(Up, "Up")
-wn.onkey(Left, "Left")
-wn.onkey(Right, "Right")
-wn.onkey(Down, "Down")
-wn.onkey(Quit, "q")
-
-wn.onclick(Goto)
+wn.onkey(swap, "s")
+wn.onkey(up, "Up")
+wn.onkey(left, "Left")
+wn.onkey(right, "Right")
+wn.onkey(down, "Down")
+wn.onkey(quit, "q")
+wn.onclick(goto)
 
 wn.listen()
 wn.mainloop()
@@ -5349,10 +5400,10 @@ import urllib.request
 
 with urllib.request.urlopen("http://python.org/") as response:
     html = response.read()
-    # print(html) bytes
+    # print(html) # bytes
     print(html.decode("utf-8"))
 
-with urllib.request.urlopen("http://www.google.com/") as everyWords: 
+with urllib.request.urlopen("http://www.google.com/") as everyWords:
     words = []
     for line in everyWords:
         # line_words = line.decode("utf-8").split()
@@ -5365,9 +5416,9 @@ with urllib.request.urlopen("http://www.google.com/") as everyWords:
 #### xml - minidom
 
 ```
-"""
+'''
 xml - minidom
-"""
+'''
 
 import xml.dom.minidom
 import urllib.request
@@ -5391,7 +5442,7 @@ class StudentParser(object):
         doc = xml.dom.minidom.parse(f)
         return doc.documentElement
 
-    def get_txt(self, node):
+    def get_text(self, node):
         return " ".join(t.nodeValue \
                         for t in node[0].childNodes \
                         if t.nodeType == t.TEXT_NODE)
@@ -5408,7 +5459,7 @@ class StudentParser(object):
         self._enrolled = xml.getAttribute("enrolled")
         for node in xml.getElementsByTagName("student"):
             number = node.getAttribute("number")
-            name = self.get_txt(node.getElementsByTagName("name"))
+            name = self.get_text(node.getElementsByTagName("name"))
             grades = self.get_grades(node.getElementsByTagName("grades")[0])
             self.students.append({"name": name, "number": number, \
                 "grades": grades})
@@ -5423,9 +5474,9 @@ if __name__ == "__main__":
 #### xml - etree.ElementTree
 
 ```
-"""
+'''
 xml - etree.ElementTree
-"""
+'''
 
 try:
     # faster C implementation
@@ -5442,7 +5493,7 @@ def create(filename):
     with open(filename, "wb") as file:
         tree.write(file)
 
-def Append(filename, name, email):
+def append(filename, name, email):
     student = ET.Element("student")
     ET.SubElement(student, "name").text = name
     ET.SubElement(student, "email").text = email
@@ -5492,14 +5543,14 @@ def delete(filename, name, all = False):
 if __name__ == "__main__":
     filePath = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("Temp", "students2.xml"))
     create(filePath)
-    Append(filePath, "student1", "student1@email.com")
-    Append(filePath, "student2", "student2_1@email.com")
-    Append(filePath, "student3", "student3@email.com")
-    Append(filePath, "student4", "student4@email.com")
-    Append(filePath, "student2", "student2_2@email.com")
-    Append(filePath, "student2", "student2_3@email.com")
-    Append(filePath, "student2", "student2_4@email.com")
-    Append(filePath, "student2", "student2_5@email.com")
+    append(filePath, "student1", "student1@email.com")
+    append(filePath, "student2", "student2_1@email.com")
+    append(filePath, "student3", "student3@email.com")
+    append(filePath, "student4", "student4@email.com")
+    append(filePath, "student2", "student2_2@email.com")
+    append(filePath, "student2", "student2_3@email.com")
+    append(filePath, "student2", "student2_4@email.com")
+    append(filePath, "student2", "student2_5@email.com")
     display(filePath)
 
     update(filePath, "student1", "XXX@email.com")
@@ -5529,3 +5580,15 @@ if __name__ == "__main__":
 <li style="font-size:0.6em;">[How to Think Like a Computer Scientist: Learning with Python 3](http://openbookproject.net/thinkcs/python/english3e/)</span>
 <li style="font-size:0.6em;">[Think Python](http://greenteapress.com/wp/think-python-2e/)</span>
 </ul>
+See also:
+<ul>
+<li style="font-size:0.6em;">[Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)</span>
+</ul>
+
+
+![QA](./Assets/images/QA.png)
+
+# Python 3
+
+![Python](./Assets/images/cover.png)
+
