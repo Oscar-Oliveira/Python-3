@@ -6,7 +6,8 @@ Code and presentation of Python 3 concept, namely:
 * Operators
 * Control Flow
 * Functions
-* Built-in Functions
+* Lambda expressions
+* Builtin Functions
 * Modules
 * Collections
 * I/O
@@ -14,8 +15,7 @@ Code and presentation of Python 3 concept, namely:
 * Iterators
 * Decorators
 * OOP
-* Lamba expressions
 * Unit tests
 * Standard Library
 
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/Oscar-Oliveira/python101/master?grs=github&t=white)
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/Oscar-Oliveira/python3/master?grs=github&t=white)
