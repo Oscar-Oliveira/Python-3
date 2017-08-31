@@ -6,7 +6,8 @@
 <li style="font-size:0.6em;">[How to Think Like a Computer Scientist: Learning with Python 3](http://openbookproject.net/thinkcs/python/english3e/)</span>
 <li style="font-size:0.6em;">[Think Python](http://greenteapress.com/wp/think-python-2e/)</span>
 </ul>
-See also:
+
+### See also:
 <ul>
 <li style="font-size:0.6em;">[Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)</span>
 </ul>
