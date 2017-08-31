@@ -1,6 +1,6 @@
 '''
 threading
-Note: run on terminal
+- Execute on terminal
 '''
 
 import random
