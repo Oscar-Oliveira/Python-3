@@ -1,0 +1,17 @@
+Reverse(filePathIn, filePathOut)
+
+filePathOut = str(Path(os.path.dirname(__file__)).parent.parent.joinpath('Temp', 'Ex17Out.txt'))
+filePathIn = str(os.path.realpath(__file__))
+
+                fileOut.write(item)
+            for item in FileIn.readlines()[::-1]:
+        with open(filepathOut, 'w+') as fileOut:
+    with open(filepathIn, "r") as FileIn:
+def Reverse(filepathIn, filepathOut):
+
+from pathlib import Path
+import os
+
+'''
+Exercise 16
+'''

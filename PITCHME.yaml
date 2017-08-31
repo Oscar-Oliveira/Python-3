@@ -1,0 +1,6 @@
+mousewheel : false
+slide-number: true
+#logo : ./Assets/images/logo.png
+#vertical-center : false
+#footnote : "© OAO"
+theme-override : ./Assets/css/PITCHME.css
