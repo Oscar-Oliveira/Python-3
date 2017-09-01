@@ -1,6 +1,6 @@
 # Python 3
 
-Code and presentation of Python 3 concepts, namely:
+Code and presentation of Python 3 fundamental concepts, namely:
 * Basics
 * Data types
 * Operators
