@@ -2,16 +2,16 @@
     
 ```Bash
 $ python                # open terminal 
-$ help()                # open interactive help
-$ quit()                # exit interactive help
+>>> help()                # open interactive help
+>>> quit()                # exit interactive help
 
-$ help(len)             # help(CommandName)
+>>> help(len)             # help(CommandName)
 
-$ help(math)            # help(module)
-$ help(math.factorial)  # help(function)
+>>> help(math)            # help(module)
+>>> help(math.factorial)  # help(function)
 
-$ a = 5
-$ help(a)               # help(object)
+>>> a = 5
+>>> help(a)               # help(object)
 ```
 
 @[1-3] 

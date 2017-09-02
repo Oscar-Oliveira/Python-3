@@ -3,9 +3,9 @@ DocString
 This is a dummy DocString for this module
 - Execute (on script folder):
     $ python
-    $ import _10_docString
-    $ help (_10_docString)
-    $ _10_docString.my_function(1, 2)
+    >>> import _10_docString
+    >>> help (_10_docString)
+    >>> _10_docString.my_function(1, 2)
 """
 
 def my_function(value1, value2):

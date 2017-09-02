@@ -3,11 +3,11 @@
 ```Bash
 $ python
 
-$ print("Hello... Terminal!")
-$ a = 5
-$ print(a * 2)
+>>> print("Hello... Terminal!")
+>>> a = 5
+>>> print(a * 2)
 
-$ exit()
+>>> exit()
 ```
 
 @[1] 
