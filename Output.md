@@ -547,6 +547,7 @@ print(message)
 ```
 """
 String format
+- See: https://docs.python.org/3.6/library/string.html
 - See: https://pyformat.info/
 """
 
@@ -584,6 +585,9 @@ print()
 print("{0:_<20} is GREAT".format(message1))
 print("{0:_>20} is GREAT".format(message1))
 print("{0:_^20} is GREAT".format(message1))
+
+print("first: {0[0]};  second: {0[1]}".format(message1))
+print("first: {0[0]};  second: {0[1]}".format([13, 24]))
 
 ```
 #### Functions
@@ -1717,6 +1721,7 @@ for name, first, second in zip(students, grades1, grades2):
 ```
 """
 import
+See: https://www.blog.pythonlibrary.org/2016/03/01/python-101-all-about-imports/
 """
 
 import math
@@ -3934,6 +3939,45 @@ if __name__ == "__main__":
     A1.print()
 
 ```
+#### Method Resolution Order (MRO)
+
+```
+"""
+Method Resolution Order (MRO)
+- See: http://python-history.blogspot.pt/2010/06/method-resolution-order.html
+"""
+
+class A(object):
+
+    def __init__(self, value1):
+        super(A, self).__init__()
+        print("A > Passed value: {0}".format(value1))
+
+class B(object):
+
+    def __init__(self, value1):
+        super(B, self).__init__(value1)
+        print("B > Passed value: {0}".format(value1))
+
+class C(object):
+
+    def __init__(self, value1, value2):
+        super(C, self).__init__(value1)
+        print("C > Passed value: {0}".format(value2))
+
+class D(C,B,A):
+
+    def __init__(self, val1, val2):
+        super(D, self).__init__(value1=val1, value2=val2)
+
+def main():
+    example = D(10, 20)
+    print(D.__mro__)
+
+if __name__ == "__main__":
+    main()
+
+```
 ## Data Structures
 ### Class - Location
 
@@ -4477,7 +4521,7 @@ except AssertionError:
 ## Standard Library
 ## The Python Standard Library
 [https://docs.python.org/3/library/](https://docs.python.org/3/library/)
-### 
+### Modules
 #### configparser
 
 ```
@@ -4746,6 +4790,39 @@ dis.dis(swap1)
 print("swap2():")
 dis.dis(swap2)
 
+```
+#### json
+
+```
+"""
+json
+"""
+
+import json
+import os
+from pathlib import Path
+
+filePath = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("_Temp", "json.log"))
+
+grades = {
+    "student1": [10, 11, 12],
+    "student2": [15, 14, 14],
+    "student3": [10, 10, 12],
+    "student4": [14, 14, 10]
+}
+
+json_ = json.dumps(grades)
+print(json_)
+
+grades = json.loads(json_)
+print(grades)
+
+with open(filePath, "w") as file:
+    json.dump(grades, file)
+
+with open(filePath, "r") as file:
+    grades = json.load(file)
+    print(grades)
 ```
 #### keyword
 
