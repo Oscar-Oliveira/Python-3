@@ -4970,6 +4970,8 @@ print("realpath: ", os.path.realpath(__file__))
 print("relpath: ", os.path.relpath(__file__))
 print("split: ", os.path.split(__file__))
 
+os.system("notepad test") # Run command in the system shell
+
 tempfolder = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("_Temp", "FOLDER"))
 tempfolder2 = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("_Temp", "FOLDER2"))
 
@@ -5015,6 +5017,8 @@ for item in os.environ.items():
 for root, dirs, files in os.walk(str(Path(os.path.dirname(__file__)).parent)):
     print(root, dirs, files)
     print()
+
+
 
 ```
 #### pathlib
@@ -5110,6 +5114,28 @@ students = [
 print(students)
 random.shuffle(students)
 print(students)
+
+```
+#### re
+
+```
+"""
+re
+See: https://docs.python.org/3/howto/regex.html#regex-howto
+See: https://docs.python.org/3/library/re.html#module-re
+"""
+
+import re
+
+zen = """Beautiful is better than ugly. Explicit is better than implicit. Simple is better than complex. Complex is better than complicated. Flat is better than nested. Sparse is better than dense.Readability counts. Special cases aren't special enough to break the rules. Although practicality beats purity. Errors should never pass silently. Unless explicitly silenced. In the face of ambiguity, refuse the temptation to guess. There should be one-- and preferably only one --obvious way to do it. Although that way may not be obvious at first unless you're Dutch. Now is better than never. Although never is often better than *right* now. If the implementation is hard to explain, it's a bad idea. If the implementation is easy to explain, it may be a good idea. Namespaces are one honking great idea -- let's do more of those"""
+
+# starts with c followed by letters 
+result = re.findall(r"\bc[a-z]*", zen)
+print(result)
+
+# Add breakline before words with uppercase first letter
+result = re.sub(r"((?!Dutch)\b[A-Z]+)", r'\n\1', zen) 
+print(result)
 
 ```
 #### smtplib
@@ -5219,6 +5245,38 @@ except Exception as e:
     raise e
 finally:
     db.close()
+
+```
+#### statistics
+
+```
+"""
+statistics
+"""
+
+import statistics
+from timeit import Timer
+
+grades = {
+    "student1": [10, 11, 12],
+    "student2": [15, 14, 14],
+    "student3": [10, 10, 12],
+    "student4": [14, 14, 10]
+}
+
+for i in range(3):
+    x = list(g[i] for s, g in grades.items())
+
+    value = statistics.mean(x)
+    print("Mean:", value)
+
+    value = statistics.median(x)
+    print("Median:", value)
+
+    value = statistics.variance(x)
+    print("Variance:", value)
+
+print(dir(statistics))
 
 ```
 #### subprocess

@@ -17,6 +17,8 @@ print("realpath: ", os.path.realpath(__file__))
 print("relpath: ", os.path.relpath(__file__))
 print("split: ", os.path.split(__file__))
 
+os.system("notepad test") # Run command in the system shell
+
 tempfolder = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("_Temp", "FOLDER"))
 tempfolder2 = str(Path(os.path.dirname(__file__)).parent.parent.joinpath("_Temp", "FOLDER2"))
 
@@ -62,3 +64,5 @@ for item in os.environ.items():
 for root, dirs, files in os.walk(str(Path(os.path.dirname(__file__)).parent)):
     print(root, dirs, files)
     print()
+
+
