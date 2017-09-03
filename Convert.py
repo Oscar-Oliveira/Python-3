@@ -1,8 +1,8 @@
 #!/usr/bin/python
 """
 Convert file structure
- :arg --md : to create md file to print (pandoc Out.md -o output.pdf)
- :arg -- pitchme : to create gitpitch file
+ :arg -m : to create md file to print (pandoc Out.md -o output.pdf)
+ :arg -p : to create gitpitch file
 """
 
 import os
@@ -14,17 +14,17 @@ class Content(object):
     def __init__(self):
         self._content = []
 
-    def Add(self, text):
+    def add(self, text):
         self._content.append("{}\n".format(text))
 
-    def Get(self):
+    def get(self):
         return "".join(self._content)
 
-excludeFolders = [".git", ".vscode", "Assets", "Temp", "__pycache__", "Package1", "Package2", "Exercises"]
+excludeFolders = [".git", ".vscode", "_Assets", "_Temp", "__pycache__", "Package1", "Package2", "Z_Exercises"]
 excludeFiles = ["__init__.py" ]
 codeExtensions = [".py"]
 
-def SetHeader(filePath, content, level, n):
+def set_header(filePath, content, level, n):
     """ Extract header from code files """
     with open(filePath) as filetemp:
         line = filetemp.readline()
@@ -32,24 +32,25 @@ def SetHeader(filePath, content, level, n):
             filetemp.readline()
         head = filetemp.readline()
         if head:
-            content.Add("{} {}".format("#" * (level + n), head))
+            content.add("{} {}".format("#" * (level + n), head))
 
-def GetTopicName(path):
-    return path.split('.')[-1].strip()
-
-def CreateFile(filename, content, toprint = False):
+def create_file(filename, content, toprint = False):
     folder = os.path.dirname(os.path.realpath(__file__))
-    backupFile = os.path.join(folder, "Temp", "_" + filename)
+    backupFile = os.path.join(folder, "_Temp", "_" + filename)
     newFile = os.path.join(folder, filename)
     if os.path.isfile(backupFile): os.remove(backupFile)
     if os.path.isfile(newFile): os.rename(newFile, backupFile)
-    md = content.Get()
+    md = content.get()
     with open(newFile, "w") as file:
         file.write(md)
     if toprint:
         print(md)
 
-def MD(toPrint):
+def get_topic_name(path):
+    t = path.split('\\')[-1].split('_')
+    return " ".join(t[1:])
+
+def md(toPrint):
     content = Content()
     #content.Add("---")
     #content.Add("geometry: margin=2cm")
@@ -59,39 +60,42 @@ def MD(toPrint):
         dirs[:] = [d for d in dirs if d not in excludeFolders]
         level = root.count("\\")
         if level != 0:
-            topicName = GetTopicName(root)
+            topicName = get_topic_name(root)
             if topicName != "Cover":
-                content.Add("{} {}".format("#" * (level + 1), topicName))
+                content.add("{} {}".format("#" * (level + 1), topicName))
             files[:] = [f for f in files if f not in excludeFiles]
             for name in files:
                 filePath = os.path.join(root, name)
                 if name.endswith(".md"):
                     with open(filePath) as file:
-                        content.Add(file.read())
+                        content.add(file.read())
                 if Path(name).suffix in codeExtensions:
-                    SetHeader(filePath, content, level, 2)
-                    content.Add("```")
+                    set_header(filePath, content, level, 2)
+                    content.add("```")
                     with open(filePath) as file:
-                        content.Add(file.read())
-                    content.Add("```")
-    CreateFile("Output.md", content, toPrint)
+                        content.add(file.read())
+                    content.add("```")
 
-def Pitch(toPrint):
+    create_file("Output.md", content, toPrint)
+
+def pitch(toPrint):
     content = Content()
     for root, dirs, files in os.walk('.'):
         dirs[:] = [d for d in dirs if d not in excludeFolders]
         level = root.count("\\")
         if level != 0:
-            topicName = GetTopicName(root)
+            topicName = get_topic_name(root)
             if topicName != "Cover":
-                content.Add("---\n{}  {}".format("#" * (level + 1), topicName))
+                content.add("---\n{}  {}".format("#" * (level + 1), topicName))
             files[:] = [f for f in files if f not in excludeFiles]
             for name in files:
                 filePath = os.path.join(root, name)
                 if name.endswith(".md"):
-                    content.Add("+++?include={}".format(filePath.replace(" ", "%20").replace("\\", "/")))
+                    content.add("+++?include={}".format( \
+                        filePath.replace(" ", "%20").replace("\\", "/")))
                 if Path(name).suffix in codeExtensions:
-                    content.Add("+++?code={}&lang=python".format(filePath.replace(" ", "%20").replace("\\", "/")))
+                    content.add("+++?code={}&lang=python".format( \
+                        filePath.replace(" ", "%20").replace("\\", "/")))
                     with open(filePath, "r") as file:
                         start = currentLine = 0
                         for line in file:
@@ -99,16 +103,16 @@ def Pitch(toPrint):
                             if start == 0 and line not in ['\n', '\r\n']:
                                 start = currentLine
                             if line in ['\n', '\r\n'] and currentLine != 1:
-                                content.Add("@[{}-{}]".format(start, currentLine - 1))
+                                content.add("@[{}-{}]".format(start, currentLine - 1))
                                 start = currentLine + 1
                         if start != 0 and currentLine != 0:
-                            content.Add("@[{}-{}]".format(start, currentLine))
+                            content.add("@[{}-{}]".format(start, currentLine))
 
-    CreateFile("PITCHME.md", content, toPrint)
+    create_file("PITCHME.md", content, toPrint)
 
 if __name__ == "__main__":
     commands = sys.argv[1:]
-    if not commands: commands.append("--pitchme") # create default
-    if "--md" in commands: MD(True)
-    if "--pitchme" in commands: Pitch(True)
+    if not commands: commands.append("-p") # create default
+    if "-m" in commands: md(True)
+    if "-p" in commands: pitch(True)
     print("Done")

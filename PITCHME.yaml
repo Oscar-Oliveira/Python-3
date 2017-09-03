@@ -3,4 +3,4 @@ slide-number: true
 #logo : ./Assets/images/logo.png
 #vertical-center : false
 #footnote : "© OAO"
-theme-override : ./Assets/css/PITCHME.css
+theme-override : ./_Assets/css/PITCHME.css
