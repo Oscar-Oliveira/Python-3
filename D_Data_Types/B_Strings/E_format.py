@@ -1,5 +1,6 @@
 """
 String format
+- See: https://docs.python.org/3.6/library/string.html
 - See: https://pyformat.info/
 """
 
@@ -37,3 +38,6 @@ print()
 print("{0:_<20} is GREAT".format(message1))
 print("{0:_>20} is GREAT".format(message1))
 print("{0:_^20} is GREAT".format(message1))
+
+print("first: {0[0]};  second: {0[1]}".format(message1))
+print("first: {0[0]};  second: {0[1]}".format([13, 24]))
