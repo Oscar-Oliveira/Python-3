@@ -12,7 +12,9 @@ for i in items:
 
 print("\n")
 items = (x*3 for x in range(1, 100) if x % 2 == 0)
-items = list(items) # force list generation consume large quantity of memory
+# You can grab all the elements of an iterator by calling list() on it. 
+# Forced list generation can consume large quantity of memory depending on the collection size.
+items = list(items)
 print(items)
 
 print()

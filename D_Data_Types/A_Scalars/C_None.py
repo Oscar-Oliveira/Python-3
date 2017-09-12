@@ -6,4 +6,4 @@ None
 value = None
 
 print(value == None)
-print(value is None)
+print(value is None) # Preferable

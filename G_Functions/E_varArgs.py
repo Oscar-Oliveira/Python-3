@@ -20,6 +20,10 @@ def mean(**grades): # dictionary params
         sum_ += grade
     print("Mean: {:.2f}".format(sum_/len(grades)))
 
+def both(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
 concat_spaced("Python", "101")
 concat_spaced("Python", "is", "really", "great!")
 
@@ -32,3 +36,6 @@ print()
 mean(Student1=20, Student2=2)
 print()
 mean(Student1=20, Student2=2, Student3=15)
+
+print()
+both(1, 2, one='a', two='b')

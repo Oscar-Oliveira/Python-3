@@ -4,7 +4,7 @@ Class - PointExt1
 See: http://pythoncentral.io/difference-between-staticmethod-and-classmethod-in-python/
 """
 
-from _02_Point import Point
+from B_Point import Point
 
 class PointExt1(Point):
 

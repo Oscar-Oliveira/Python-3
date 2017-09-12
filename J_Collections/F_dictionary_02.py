@@ -67,3 +67,7 @@ positive = {name: grade for name, grade
             if 10 in grade}
 for name, student_grades in positive.items():
     print("Name: {} | Grades: {}".format(name, student_grades))
+
+print()
+print(list(grades.keys()))
+print(list(grades.values()))

@@ -3,7 +3,7 @@ Properties - Getter and Setter
 Class - PointExt2
 """
 
-from _02_Point import Point
+from B_Point import Point
 
 class PointExt2(Point):
 
@@ -20,7 +20,6 @@ class PointExt2(Point):
     Color = property(get_color, set_color)
 
 def main():
-    
     point = PointExt2(2, 2)
     print(point.Color)
     point.Color = "red"

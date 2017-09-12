@@ -2,7 +2,7 @@
 Attributes
 """
 
-from _02_Point import Point
+from B_Point import Point
 
 def main():
 

@@ -2,7 +2,7 @@
 Dogs and Cats
 """
 
-from _02_Animal import Animal
+from B_Animal import Animal
 
 class Dog(Animal):
 

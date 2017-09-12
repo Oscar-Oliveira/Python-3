@@ -2,6 +2,14 @@
 lambda expressions
 """
 
+print((lambda x: x > 2)(3))
+print((lambda x, y: x * 2 + y * 2)(3, 2))
+
+f = lambda x: x > 2
+print(f(3))
+f = lambda x, y: x * 2 + y * 2
+print(f(3, 2))
+
 f = lambda x: x ** (2 if x > 5 else 3)
 for i in range(10):    
     print(f(i))

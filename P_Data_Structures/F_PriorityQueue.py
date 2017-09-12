@@ -2,8 +2,8 @@
 Priority Queue
 """
 
-from _01_Location import Location
-from _05_Queue import Queue1
+from A_Location import Location
+from E_Queue import Queue1
 
 class PriorityQueue(Queue1):
 

@@ -9,21 +9,21 @@ print("a - 2 = {}".format(a))
 a = a * 2
 print("a = a * 2 = {}".format(a))
 a = a / 2
-print("a = a / 2 {}".format(a))
+print("a = a / 2 {}".format(a)) # The result of division is always a float
 
 print()
-a = a ** 2 # Power
+a = a ** 2 # Exponentiation (x**y, x to the power of y)
 print("a = a ** 2 = {}".format(a))
 
 print()
-# // Divide and round DOWN to the nearest whole number
+# // integer division, divides and rounds DOWN to the nearest whole number
 b = a // 3 
 print("b = a // 3 {}".format(b))
 b = -a // 3
 print("b = -a // 3 = {}".format(b))
 
 print()
-b = (a * 3) // 2.5 # Modulo
+b = (a * 3) // 2.5
 print("b = (a * 3) // 2.5 = {}".format(b))
 c = (a * 3) % 2.5 # Modulo
 print("c = (a * 3) % 2.5 = {}".format(b))

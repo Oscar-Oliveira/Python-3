@@ -3,8 +3,8 @@ Class - Rectangle
 """
 
 import copy
-from _01_GeometricForm import GeometricForm
-from _02_Point import Point
+from A_GeometricForm import GeometricForm
+from B_Point import Point
 
 class Rectangle(GeometricForm):
 

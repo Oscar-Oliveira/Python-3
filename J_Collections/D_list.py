@@ -37,6 +37,10 @@ print("Avg:", my_avg(grades))
 print(10 in grades)
 
 print()
+grades.insert(1, 12)
+print("Grades:", grades)
+
+print()
 grades.append(15)
 print("Updated grades:", grades)
 print("Updated avg:", my_avg(grades))

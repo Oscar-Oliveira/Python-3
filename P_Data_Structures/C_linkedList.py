@@ -2,8 +2,8 @@
 Class - LinkedList
 """
 
-from _01_Location import Location
-from _02_Node import Node
+from A_Location import Location
+from B_Node import Node
 
 class LinkedList():
 

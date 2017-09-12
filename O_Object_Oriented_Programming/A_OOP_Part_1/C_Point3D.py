@@ -3,7 +3,7 @@ Class - Point3D
 """
 
 import math
-from _02_Point import Point
+from B_Point import Point
 
 class Point3D(Point):
 

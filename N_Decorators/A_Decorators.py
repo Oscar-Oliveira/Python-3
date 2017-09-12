@@ -5,12 +5,10 @@ See: https://pythonconquerstheuniverse.wordpress.com/2012/04/29/python-decorator
 """
 
 def make_me_pretty(func):
-
-    def wrapper(*args):
+    def wrapper(*args, **kwargs):
         print('-' * 20)
-        print("{:^20}".format(func(*args)))
+        print("{:^20}".format(func(*args, **kwargs)))
         print('-' * 20)
-
     return wrapper
 
 @make_me_pretty

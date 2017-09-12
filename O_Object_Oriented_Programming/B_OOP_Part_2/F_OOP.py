@@ -2,8 +2,8 @@
 OOP - Examples
 """
 
-from _02_Animal import Animal
-from _05_Dogs_and_Cats import Dog, Cat
+from B_Animal import Animal
+from E_Dogs_and_Cats import Dog, Cat
 
 A1 = Dog("Rufus")
 A2 = Dog("Bobby")

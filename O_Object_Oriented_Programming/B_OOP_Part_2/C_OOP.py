@@ -2,8 +2,8 @@
 OOP - Examples
 """
 
-from _01_Owner import Owner
-from _02_Animal import Animal
+from A_Owner import Owner
+from B_Animal import Animal
 
 owner1 = Owner("Jack")
 owner2 = Owner("John")

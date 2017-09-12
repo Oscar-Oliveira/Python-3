@@ -2,8 +2,8 @@
 OOP - Examples
 """
 
-import _02_Animal as A
-import _01_Owner as O
+import A_Owner as O
+import B_Animal as A
 
 dog1 = A.Animal(None)
 dog2 = A.Animal(O.Owner("Jack"), "Rufus", 15)

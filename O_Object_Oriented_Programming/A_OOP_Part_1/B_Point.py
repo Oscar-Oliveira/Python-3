@@ -2,7 +2,7 @@
 Class - Point
 """
 
-from _01_GeometricForm import GeometricForm
+from A_GeometricForm import GeometricForm
 
 class Point(GeometricForm):
     """Class to define a point in space"""
