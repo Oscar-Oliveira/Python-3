@@ -2332,12 +2332,30 @@ print(x, y)
 
 # * represents: rest of
 values = list(range(10)) 
+print(values) 
 (one, two, *three) = values 
-print(three) 
+print("one:", one)
+print("two:", two)
+print("three:", three)
+
 (one, *two, three) = values 
-print (two) 
+print("one:", one)
+print("two:", two)
+print("three:", three)
+
 (*one, two, three) = values 
-print(one)
+print("one:", one)
+print("two:", two)
+print("three:", three)
+
+def print_data(a, b, c):
+    print("a:", a)
+    print("b:", b)
+    print("c:", c)
+
+a = (1, 2, 3)
+print_data(*a)
+print("{} {} {}".format(*a))
 
 ```
 ### Dictionary
@@ -4063,6 +4081,219 @@ if __name__ == "__main__":
     main()
 
 ```
+### OOP Part 3
+#### 
+
+```
+import random
+
+class Weapons():
+
+    Armory = ["Sword", "Cheese", "pistols", "Fish"]
+
+    @staticmethod
+    def Get():
+        return Weapons.Armory[random.randint(0, len(Weapons.Armory)-1)]
+
+class Character():
+
+    def __init__(self, name, description=None):
+        self.__name = name
+        self.__description = description
+        self.__conversation = None
+
+    @property
+    def Description(self):
+        return self.__description
+
+    @Description.setter
+    def set_description(self, value):
+        self.__description = value
+
+    @property
+    def Name(self):
+        return self.__name
+
+    @Name.setter
+    def set_name(self, value):
+        self.__name = value
+
+    @property
+    def Talk(self):
+        return "{}: {}".format(self.__name, self.__conversation)
+
+    @Talk.setter
+    def Talk(self, value):
+        self.__conversation = value
+
+    def __str__(self):
+        return "I´m the {}".format(self.__name)
+
+class Hero(Character):
+
+    def __init__(self, name, description=None):
+        super().__init__(name, description)
+        self.__weapon = Weapons.Get()
+
+    @property
+    def Weapon(self):
+        return self.__weapon
+
+    @property
+    def Back(self):
+        return "I have a {}, i will be back with another weapon!!!!".format(self.__weapon)
+
+    def fight(self, enemy):
+        if enemy and self.Weapon == enemy.Weakness:
+            return True
+        return False
+
+    def change_weapon(self):
+        self.__weapon = Weapons.Get()
+
+    def __str__(self):
+        return "I´m the {} and my weapon is {}!!!".format(self.Name, self.__weapon)
+
+class Enemy(Character):
+
+    def __init__(self, name, description=None):
+        super().__init__(name, description)
+        self.__weakness = Weapons.Get()
+
+    @property
+    def Weakness(self):
+        return self.__weakness
+
+    def __str__(self):
+        return "I´m the {} and my only weakness is {}!!!".format(self.Name, self.__weakness)
+
+```
+#### OOP - Game
+
+```
+"""
+OOP - Game
+"""
+import random
+from room import Room
+from character import Hero, Enemy
+
+DIRECTIONS = ["N", "S", "E", "W"]
+
+def layout(castle):
+    castle.append(Room("Room 1", "Room identified by id 1"))
+    castle.append(Room("Room 2", "Room identified by id 2"))
+    castle.append(Room("Room 3", "Room identified by id 3"))
+    castle.append(Room("Room 4", "Room identified by id 4"))
+
+    '''
+    Room layout
+    ROOM 1 [0] | ROOM 2 [1]
+    ROOM 3 [2] | ROOM 4 [3]
+    '''
+    castle[0].link_to_room(castle[1], DIRECTIONS[2])
+    castle[0].link_to_room(castle[2], DIRECTIONS[1])
+    castle[1].link_to_room(castle[0], DIRECTIONS[3])
+    castle[1].link_to_room(castle[3], DIRECTIONS[1])
+    castle[2].link_to_room(castle[0], DIRECTIONS[0])
+    castle[2].link_to_room(castle[3], DIRECTIONS[2])
+    castle[3].link_to_room(castle[1], DIRECTIONS[0])
+    castle[3].link_to_room(castle[2], DIRECTIONS[3])
+
+def main():
+
+    player = Hero("King", "The brave king of nowhere!")
+    player.Talk = "Who is here?"
+
+    enemy = Enemy("Wizard", "The evil wizard!")
+    enemy.Talk = "Your worst enemy!!!!"
+
+    castle = []
+    layout(castle)
+    current_room = castle[0]
+
+    castle[random.randint(1, len(castle)-1)].Character = enemy
+
+    print(player)
+    print("I'm in:")
+    print(current_room)
+
+    print()
+    while True:
+        direction = input("Where to ? ").upper()
+        if direction == "EXIT":
+            break
+        print()
+        if direction in DIRECTIONS:
+            current_room = current_room.move_to_direction(direction)
+            print(current_room)
+            if current_room.Character:
+                print(player.Talk)
+                print(enemy.Talk)
+                if player.fight(current_room.Character):
+                    print("\nWell done you have defeated your enemy!\n")
+                    break
+                print(player.Back)
+                player.change_weapon()
+        print()
+
+if __name__ == "__main__":
+    main()
+    print("done!!")
+
+```
+#### 
+
+```
+class Room():
+
+    def __init__(self, name, description=None):
+        self.__name = name
+        self.__description = description
+        self.__linked_rooms = {}
+        self.__character = None
+
+    @property
+    def Name(self):
+        return self.__name
+
+    @Name.setter
+    def Name(self, value):
+        self.__name = value
+    
+    @property
+    def Description(self):
+        return self.__description
+
+    @Description.setter
+    def Description(self, value):
+        self.__description = value
+    
+    @property
+    def Character(self):
+        return self.__character
+    
+    @Character.setter
+    def Character(self, value):
+        self.__character = value
+
+    def link_to_room(self, room, direction):
+        self.__linked_rooms[direction] = room
+
+    def move_to_direction(self, direction):
+        return self.__linked_rooms[direction] \
+               if direction in self.__linked_rooms \
+               else self
+
+    def __str__(self):
+        return_value = self.Name
+        for direction in self.__linked_rooms:
+            room = self.__linked_rooms[direction]
+            return_value += " [" + room.Name + ": " + direction + "]"
+        return_value += " Inside: " + (str(self.__character) if self.__character != None else "Nobody")
+        return return_value
+
+```
 ## Data Structures
 ### Class - Location
 
@@ -5727,6 +5958,38 @@ wn.onkey(right, "Right")
 wn.onkey(down, "Down")
 wn.onkey(quit, "q")
 wn.onclick(goto)
+
+wn.listen()
+wn.mainloop()
+
+```
+#### turtle
+
+```
+"""
+turtle
+"""
+
+import turtle
+import random
+
+colors = ["blue", "black", "brown", "red", "orange", "green",
+          "yellow", "beige", "turquoise", "pink"]
+
+wn = turtle.Screen()
+
+turtles = [turtle.Turtle() for _ in range(10)]
+
+for i, t in enumerate(turtles):
+    t.shape("turtle")
+    t.color(colors[i])
+    t.penup()
+    t.goto(-260, i * 30)
+    t.pendown()
+
+for _ in range(100):
+    for _, t in enumerate(turtles):
+        t.forward(random.randint(0, 10))
 
 wn.listen()
 wn.mainloop()

@@ -38,9 +38,27 @@ print(x, y)
 
 # * represents: rest of
 values = list(range(10)) 
+print(values) 
 (one, two, *three) = values 
-print(three) 
+print("one:", one)
+print("two:", two)
+print("three:", three)
+
 (one, *two, three) = values 
-print (two) 
+print("one:", one)
+print("two:", two)
+print("three:", three)
+
 (*one, two, three) = values 
-print(one)
+print("one:", one)
+print("two:", two)
+print("three:", three)
+
+def print_data(a, b, c):
+    print("a:", a)
+    print("b:", b)
+    print("c:", c)
+
+a = (1, 2, 3)
+print_data(*a)
+print("{} {} {}".format(*a))

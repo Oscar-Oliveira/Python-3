@@ -36,7 +36,7 @@ print("Hello World!")
 Shebang
 - Indicates the interpreter to use
 - See: https://en.wikipedia.org/wiki/Shebang_%28Unix%29
-- On terminal: $ .\_01_helloWorld.py
+- On terminal: $ .\A_helloWorld.py
 """
 
 # My first program
@@ -53,19 +53,13 @@ Comments
 # This is a single line comment
 # This is another single line comment
 
-'''
-This
-is
-a
-multiline
+''' This is
+a multiline
 comment
 '''
 
-"""
-This
-is
-another
-multiline
+""" This is
+another multiline
 comment
 """
 
@@ -290,7 +284,7 @@ None
 value = None
 
 print(value == None)
-print(value is None)
+print(value is None) # Preferable
 
 ```
 #### bool
@@ -695,21 +689,21 @@ print("a - 2 = {}".format(a))
 a = a * 2
 print("a = a * 2 = {}".format(a))
 a = a / 2
-print("a = a / 2 {}".format(a))
+print("a = a / 2 {}".format(a)) # The result of division is always a float
 
 print()
-a = a ** 2 # Power
+a = a ** 2 # Exponentiation (x**y, x to the power of y)
 print("a = a ** 2 = {}".format(a))
 
 print()
-# // Divide and round DOWN to the nearest whole number
+# // integer division, divides and rounds DOWN to the nearest whole number
 b = a // 3 
 print("b = a // 3 {}".format(b))
 b = -a // 3
 print("b = -a // 3 = {}".format(b))
 
 print()
-b = (a * 3) // 2.5 # Modulo
+b = (a * 3) // 2.5
 print("b = (a * 3) // 2.5 = {}".format(b))
 c = (a * 3) % 2.5 # Modulo
 print("c = (a * 3) % 2.5 = {}".format(b))
@@ -813,6 +807,15 @@ print("(a < b) or (c > b) = {}".format((a < b) or (c > b)))
 # 1 0 1
 # 0 1 1
 # 0 0 0
+
+print()
+a = [1, 2, 3]
+b = a        
+print(b is a) # is checks if variables refer to the same object
+print(b == a) # == checks if the objects pointed to have the same values
+b = [1, 2, 3] 
+print(b is a)
+print(b == a)
 
 ```
 ### in
@@ -1275,6 +1278,10 @@ def mean(**grades): # dictionary params
         sum_ += grade
     print("Mean: {:.2f}".format(sum_/len(grades)))
 
+def both(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
 concat_spaced("Python", "101")
 concat_spaced("Python", "is", "really", "great!")
 
@@ -1287,6 +1294,9 @@ print()
 mean(Student1=20, Student2=2)
 print()
 mean(Student1=20, Student2=2, Student3=15)
+
+print()
+both(1, 2, one='a', two='b')
 
 ```
 ### return
@@ -1321,6 +1331,11 @@ def my_sqrt(value):
         return
     print("value must be > 0")
 
+def adder(x):
+    def inside_adder(y):
+        return x + y
+    return inside_adder
+
 print(my_max(1, 17, 5, 2, 50, -75, 1))
 
 print()
@@ -1335,6 +1350,10 @@ print()
 my_sqrt(2)
 my_sqrt(-2)
 
+add = adder(5)
+print(add(3))
+print(add(5))
+
 ```
 ### lambda expressions
 
@@ -1342,6 +1361,14 @@ my_sqrt(-2)
 """
 lambda expressions
 """
+
+print((lambda x: x > 2)(3))
+print((lambda x, y: x * 2 + y * 2)(3, 2))
+
+f = lambda x: x > 2
+print(f(3))
+f = lambda x, y: x * 2 + y * 2
+print(f(3, 2))
 
 f = lambda x: x ** (2 if x > 5 else 3)
 for i in range(10):    
@@ -1510,10 +1537,10 @@ filter
 def is_even(number): 
     return number % 2 == 0
 
-values = list(range(10))
+values = list(filter(lambda x: x >= 2, [1, 2, 3, 4]))
 print("".join(str(x) for x in values))
 
-values = filter(is_even, values)
+values = list(range(10))
 print("".join(str(x) for x in values))
 
 values = filter(lambda x: x % 3 == 0, list(range(10)))
@@ -1549,6 +1576,24 @@ print(len(item))
 
 items = [10, 2, 25]
 print(len(items))
+
+```
+### map
+
+```
+"""
+map
+"""
+
+def multiply(value, times=1):
+    return value * times
+
+a = list(map(multiply, [1, 2, 3]))
+print(a)
+
+print()
+a = list(map(multiply, [1, 2, 3], [1, 2, 3]))
+print(a)
 
 ```
 ### max
@@ -1637,6 +1682,18 @@ print_range(range(1, 20, 2))
 print_range(range(20, 0, -1))
 print_range(range(-20, 0, 2))
 print_range(range(0, -20, -2))
+
+```
+### round
+
+```
+"""
+round
+"""
+
+print(round(233.33333))
+print(round(233.33333, 2))
+print(round(233.33333, -2))
 
 ```
 ### sum
@@ -2074,6 +2131,10 @@ print("Avg:", my_avg(grades))
 print(10 in grades)
 
 print()
+grades.insert(1, 12)
+print("Grades:", grades)
+
+print()
 grades.append(15)
 print("Updated grades:", grades)
 print("Updated avg:", my_avg(grades))
@@ -2288,39 +2349,52 @@ Dictionary
 - keys are uniques and must be immutables.
 """
 
-student = {}
-student["john"] = "student1@email.com"
-student["jack"] = "student2@email.com"
+#Add
+students = {}
+students["john"] = "student1@email.com"
+students.setdefault("john", "1@1.com") # "setdefault()" inserts into a dictionary only if the given key isn't present
+students.setdefault("jack", "student2@email.com") 
+students.update({"jane":"jastudent3ne@email.com"})
+print(students)
 
-print("Number of students:", len(student))
+print("Number of students:", len(students))
 
 print()
-if "john" in student:
+if "john" in students:
     print("John exit!!")
-if "cliff" in student:
+if "cliff" in students:
     print("cliff exit!!")
 
 print()
 # alias
-backup_student = student
-student["john"] = "john@python.org"
-print(student)
+backup_student = students
+students["john"] = "john@python.org"
+print(students)
 print(backup_student)
 
 print()
 # copy() perform a shallow copy
-backup_student = student.copy()
+backup_student = students.copy()
 backup_student["john"] = "otherJohn@python.org"
-print(student)
+print(students)
 print(backup_student)
 
 print()
-for name, email in student.items():
+for name, email in students.items():
     print("Name: {} | email: {}".format(name, email))
 
 print()
-for name, email in sorted(student.items()):
+for name, email in sorted(students.items()):
     print("Name: {} | email: {}".format(name, email))
+
+print()
+print(students.get("john")) # john@python.org
+print(students.get("ford")) # None
+print(students.get("john", -1)) # john@python.org
+print(students.get("ford", -1)) # -1
+
+
+
 
 ```
 ### Dictionary
@@ -2395,6 +2469,10 @@ positive = {name: grade for name, grade
             if 10 in grade}
 for name, student_grades in positive.items():
     print("Name: {} | Grades: {}".format(name, student_grades))
+
+print()
+print(list(grades.keys()))
+print(list(grades.values()))
 
 ```
 ### Sets
@@ -3013,7 +3091,9 @@ for i in items:
 
 print("\n")
 items = (x*3 for x in range(1, 100) if x % 2 == 0)
-items = list(items) # force list generation consume large quantity of memory
+# You can grab all the elements of an iterator by calling list() on it. 
+# Forced list generation can consume large quantity of memory depending on the collection size.
+items = list(items)
 print(items)
 
 print()
@@ -3063,12 +3143,10 @@ See: https://pythonconquerstheuniverse.wordpress.com/2012/04/29/python-decorator
 """
 
 def make_me_pretty(func):
-
-    def wrapper(*args):
+    def wrapper(*args, **kwargs):
         print('-' * 20)
-        print("{:^20}".format(func(*args)))
+        print("{:^20}".format(func(*args, **kwargs)))
         print('-' * 20)
-
     return wrapper
 
 @make_me_pretty
@@ -3199,7 +3277,7 @@ class GeometricForm():
 Class - Point
 """
 
-from _01_GeometricForm import GeometricForm
+from A_GeometricForm import GeometricForm
 
 class Point(GeometricForm):
     """Class to define a point in space"""
@@ -3318,7 +3396,7 @@ Class - Point3D
 """
 
 import math
-from _02_Point import Point
+from B_Point import Point
 
 class Point3D(Point):
 
@@ -3369,8 +3447,8 @@ Class - Rectangle
 """
 
 import copy
-from _01_GeometricForm import GeometricForm
-from _02_Point import Point
+from A_GeometricForm import GeometricForm
+from B_Point import Point
 
 class Rectangle(GeometricForm):
 
@@ -3441,7 +3519,7 @@ if __name__ == "__main__":
 Attributes
 """
 
-from _02_Point import Point
+from B_Point import Point
 
 def main():
 
@@ -3475,7 +3553,7 @@ Class - PointExt1
 See: http://pythoncentral.io/difference-between-staticmethod-and-classmethod-in-python/
 """
 
-from _02_Point import Point
+from B_Point import Point
 
 class PointExt1(Point):
 
@@ -3531,7 +3609,7 @@ Properties - Getter and Setter
 Class - PointExt2
 """
 
-from _02_Point import Point
+from B_Point import Point
 
 class PointExt2(Point):
 
@@ -3548,7 +3626,6 @@ class PointExt2(Point):
     Color = property(get_color, set_color)
 
 def main():
-    
     point = PointExt2(2, 2)
     print(point.Color)
     point.Color = "red"
@@ -3567,13 +3644,15 @@ Properties - Decorators
 Class - PointExt3
 """
 
-from _02_Point import Point
+from B_Point import Point
 
 class PointExt3(Point):
 
+    _defaut_Color = None
+
     def __init__(self, x, y):
         super().__init__(x + 2, y + 2)
-        self.__color = None
+        self.__color = PointExt3._defaut_Color
 
     @property
     def Color(self):
@@ -3583,12 +3662,18 @@ class PointExt3(Point):
     def Color(self, value):
         self.__color = value
 
+    @Color.deleter
+    def Color(self):
+        print("Deleting color...")
+        del self.__color
+
 def main():
 
     point = PointExt3(2, 2)
     print(point.Color)
     point.Color = "red"
     print(point.Color)
+    del point.Color
 
 if __name__ == "__main__":
     main()
@@ -3626,7 +3711,7 @@ if __name__ == "__main__":
 Animal Class 
 """
 
-from _01_Owner import Owner
+from A_Owner import Owner
 
 class Animal:
     """Animal Class"""
@@ -3710,8 +3795,8 @@ class Animal:
 OOP - Examples
 """
 
-from _01_Owner import Owner
-from _02_Animal import Animal
+from A_Owner import Owner
+from B_Animal import Animal
 
 owner1 = Owner("Jack")
 owner2 = Owner("John")
@@ -3786,8 +3871,8 @@ for a in animals:
 OOP - Examples
 """
 
-import _02_Animal as A
-import _01_Owner as O
+import A_Owner as O
+import B_Animal as A
 
 dog1 = A.Animal(None)
 dog2 = A.Animal(O.Owner("Jack"), "Rufus", 15)
@@ -3826,7 +3911,7 @@ print(dog2 is dog3)
 Dogs and Cats
 """
 
-from _02_Animal import Animal
+from B_Animal import Animal
 
 class Dog(Animal):
 
@@ -3852,8 +3937,8 @@ class Cat(Animal):
 OOP - Examples
 """
 
-from _02_Animal import Animal
-from _05_Dogs_and_Cats import Dog, Cat
+from B_Animal import Animal
+from E_Dogs_and_Cats import Dog, Cat
 
 A1 = Dog("Rufus")
 A2 = Dog("Bobby")
@@ -4023,8 +4108,8 @@ class Node:
 Class - LinkedList
 """
 
-from _01_Location import Location
-from _02_Node import Node
+from A_Location import Location
+from B_Node import Node
 
 class LinkedList():
 
@@ -4073,7 +4158,7 @@ if __name__ == "__main__":
 Stack
 """
 
-from _01_Location import Location
+from A_Location import Location
 
 class StackADT():
 
@@ -4121,8 +4206,8 @@ if __name__ == "__main__":
 Queue
 """
 
-from _01_Location import Location
-from _02_Node import Node
+from A_Location import Location
+from B_Node import Node
 
 class QueueADT():
 
@@ -4233,8 +4318,8 @@ if __name__ == "__main__":
 Priority Queue
 """
 
-from _01_Location import Location
-from _05_Queue import Queue1
+from A_Location import Location
+from E_Queue import Queue1
 
 class PriorityQueue(Queue1):
 
@@ -4269,7 +4354,7 @@ if __name__ == "__main__":
 Tree
 """
 
-from _01_Location import Location
+from A_Location import Location
 
 class TreeADT():
 
@@ -5838,6 +5923,14 @@ if __name__ == "__main__":
 <li style="font-size:0.6em;">[Codecademy - Learn Python](https://www.codecademy.com/learn/learn-python)</span>
 <li style="font-size:0.6em;">[How to Think Like a Computer Scientist: Learning with Python 3](http://openbookproject.net/thinkcs/python/english3e/)</span>
 <li style="font-size:0.6em;">[Think Python](http://greenteapress.com/wp/think-python-2e/)</span>
+<li style="font-size:0.6em;">[Automate the Boring Stuff with Python](https://automatetheboringstuff.com)</span>
+<li style="font-size:0.6em;">[The Hitchhiker’s Guide to Python!](http://docs.python-guide.org/en/latest/)</span>
+<li style="font-size:0.6em;">[Python Course](https://www.python-course.eu/index.php)</span>
+<li style="font-size:0.6em;">[30 Python Language Features and Tricks You May Not Know About](http://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html)</span>
+<li style="font-size:0.6em;">[Computer Science Circles](https://cscircles.cemc.uwaterloo.ca)</span>
+<li style="font-size:0.6em;">[Dive Into Python 3](http://www.diveintopython3.net/index.html)</span>
+<li style="font-size:0.6em;">[A Crash Course in Python for Scientists](http://nbviewer.jupyter.org/gist/anonymous/5924718)</span>
+<li style="font-size:0.6em;">[PEP 8 -- Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/)</span>
 <li style="font-size:0.6em;">[Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)</span>
 </ul>
 
