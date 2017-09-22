@@ -1366,6 +1366,17 @@
 @[21-22]
 @[24-25]
 @[27-27]
++++?code=./R_Standard_Library/A_Modules/_string.py&lang=python
+@[1-3]
+@[5-5]
+@[7-8]
+@[10-11]
+@[13-13]
+@[15-15]
+@[17-17]
+@[19-19]
+@[21-21]
+@[23-23]
 +++?code=./R_Standard_Library/A_Modules/_subprocess.py&lang=python
 @[1-4]
 @[6-6]
