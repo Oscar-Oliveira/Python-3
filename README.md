@@ -1,13 +1,14 @@
 # Python 3
 
-Code and presentation of Python 3 fundamental concepts, namely:
+Code of Python 3 fundamental concepts, namely:
+
 * Basics
 * Data types
 * Operators
-* Control Flow
+* Control flow
 * Functions
 * Lambda expressions
-* Builtin Functions
+* Builtin functions
 * Modules
 * Collections
 * I/O
@@ -16,6 +17,4 @@ Code and presentation of Python 3 fundamental concepts, namely:
 * Decorators
 * OOP
 * Unit tests
-* Standard Library
-
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/Oscar-Oliveira/python3/master?grs=github&t=white)
+* Standard library
