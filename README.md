@@ -1,6 +1,6 @@
 # Python 3
 
-Code of Python 3 fundamental concepts, namely:
+Python 3 fundamentals:
 
 * Basics
 * Data types
